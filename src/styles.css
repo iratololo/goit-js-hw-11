@@ -1,0 +1,148 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+:root {
+    --timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    --animation-duration: 250ms;
+}
+
+
+
+.gallery {
+    display: grid;
+    max-width: 1400px;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-auto-rows: auto;
+    grid-gap: 12px;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 80px;
+}
+
+
+.photo-card {
+    box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+        0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 2px 1px -1px rgba(0, 0, 0, 0.12);
+}
+
+.photo-card:hover {
+    transform: scale(1.03);
+    transition: transform var(--animation-duration) var(--timing-function);
+}
+
+
+.photo-card img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+}
+
+.info {
+    padding: 20px;
+    line-height: 1.5;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column; 
+    text-align: center; 
+}
+
+
+
+
+/* Form style */
+
+.search-form {
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgb(31, 73, 145);
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    column-gap: 15px;
+}
+
+.search-form input {
+    height: 40px;
+    width: 250px;
+    padding-left: 10px;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+}
+
+.search-form button {
+    height: 40px;
+    padding: 10px 15px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 5px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ff7040;
+    color: #fff;
+}
+
+.search-form button:hover {
+    background-color: #e95b2c;
+    transition: background-color var(--animation-duration) var(--timing-function);
+}
+
+.search-form input:focus {
+    outline: 3px solid #ff7040;
+}
+
+.js-guard {
+    text-align: center;
+    font-size: 30px;
+    color: rgb(40, 40, 192);
+}
+
+
+
+.load-more {
+    display: none;
+}
+
