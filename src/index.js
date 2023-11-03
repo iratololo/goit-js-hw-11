@@ -14,12 +14,12 @@ const lightbox = new SimpleLightbox('.gallery a', {
     overlayOpacity: 0.9,
 });
 
-const options = {
+const option = {
   root: null,
   rootMargin: "350px",
 };
 
-const observer = new IntersectionObserver(handlerLoadMore, options);
+const observer = new IntersectionObserver(handlerLoadMore, option);
 
 
 form.addEventListener('submit', handlerSearch);
