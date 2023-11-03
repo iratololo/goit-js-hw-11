@@ -69,6 +69,7 @@ async function handlerLoadMore(entries, observer) {
             options.params.page += 1;
             try {
                 const images = await serviceGetImages();
+                console.log('images', images);
                 const { hits, totalHits } = images;
                 gallery.insertAdjacentHTML('beforeend', createMurkupGallery(hits));
                 lightbox.refresh();
@@ -115,7 +116,9 @@ function createMurkupGallery(arr) {
 
 export async function serviceGetImages() {
     const resp = await axios.get(BASE_URL, options);
-    return { hits, totalHits } = resp.data;
+    // const { hits, totalHits } = resp.data;
+    return resp.data;
+    // console.log(totalHits);
 }
 
 
