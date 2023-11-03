@@ -31,7 +31,7 @@ async function handlerSearch(e) {
     options.params.page = 1;
     options.params.q === "";
     gallery.innerHTML = '';
-    let enteredValue = e.target.elements.searchQuery;
+    let enteredValue = e.currentTarget.elements.searchQuery;
     options.params.q = enteredValue.value.trim();
     if (options.params.q === "") {
         Notify.failure('"Еhe search field is empty, please enter something."');
@@ -55,6 +55,7 @@ async function handlerSearch(e) {
         }
     
     } catch (error) {
+        console.log('object :>> ',error);
         Notify.failure(error); 
     }
 }
@@ -76,6 +77,7 @@ async function handlerLoadMore(entries, observer) {
                     guard.style.padding = "30px";
                 }
             } catch (error) {
+                console.log('catch observer',error);
                             Notify.failure(error);
             }
         }
