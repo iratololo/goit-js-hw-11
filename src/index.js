@@ -6,7 +6,7 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const { form, gallery, guard} = elements;
 
-const lightbox = new SimpleLightbox('.lightbox', {
+const lightbox = new SimpleLightbox('.gallery a', {
     captionsData: 'alt',
     captionDelay: 250,
     showCounter: false,
@@ -48,6 +48,7 @@ async function handlerSearch(e) {
         }
         Notify.success(`Hooray! We found ${totalHits} images.`);
         gallery.insertAdjacentHTML('beforeend', createMurkupGallery(hits));
+        lightbox.refresh();
         enteredValue.value = '';
         if (options.params.page * options.params.per_page < totalHits && options.params.q !== "") {
             observer.observe(guard);
@@ -86,7 +87,7 @@ async function handlerLoadMore(entries, observer) {
 
 function createMurkupGallery(arr) {
     return arr.map(({ webformatURL, largeImageURL, tags, likes, views, comments, downloads }) =>
-        `<a href="${largeImageURL}" class="lightbox photo-card"> 
+        `<a href="${largeImageURL}" class="photo-card"> 
             <img src="${webformatURL}" alt="${tags}" loading="lazy" />
             <div class="info">
                 <p class="info-item">

@@ -1,6 +1,6 @@
 import axios from 'axios';
-export const BASE_URL = 'https://pixabay.com/api/';
-export const API_KEY = "11644375-e9c2f2fccdc526658b5d6a867";
+BASE_URL = 'https://pixabay.com/api/';
+const API_KEY = "11644375-e9c2f2fccdc526658b5d6a867";
 export const options = {
   params: {
     key: API_KEY,
