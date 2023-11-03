@@ -40,8 +40,11 @@ async function handlerSearch(e) {
     }
     // options.params.q = enteredValue.value.trim();
     try {
-        const images = await serviceGetImages();
-        const { hits, totalHits } = images;
+        // const images = await serviceGetImages();
+        // const { hits, totalHits } = images;
+        const resp = await axios.get(BASE_URL, options);
+        const totalHits = resp.data.totalHits;
+        const hits = resp.data.hits;
         if (!totalHits) {
             enteredValue.value = '';
             Notify.failure('"Sorry, there are no images matching your search query. Please try again."');
@@ -68,9 +71,12 @@ async function handlerLoadMore(entries, observer) {
         if (entry.isIntersecting && options.params.q !== "") {
             options.params.page += 1;
             try {
-                const images = await serviceGetImages();
-                console.log('images', images);
-                const { hits, totalHits } = images;
+                // const images = await serviceGetImages();
+                // console.log('images', images);
+                // const { hits, totalHits } = images;
+                const resp = await axios.get(BASE_URL, options);
+        const totalHits = resp.data.totalHits;
+        const hits = resp.data.hits;
                 gallery.insertAdjacentHTML('beforeend', createMurkupGallery(hits));
                 lightbox.refresh();
                 if (options.params.page * options.params.per_page >= totalHits && totalHits !== 0) {
@@ -114,12 +120,12 @@ function createMurkupGallery(arr) {
         </a>`).join("");}
 
 
-export async function serviceGetImages() {
-    const resp = await axios.get(BASE_URL, options);
-    // const { hits, totalHits } = resp.data;
-    return resp.data;
-    // console.log(totalHits);
-}
+// export async function serviceGetImages() {
+//     const resp = await axios.get(BASE_URL, options);
+//     // const { hits, totalHits } = resp.data;
+//     return resp.data;
+//     // console.log(totalHits);
+// }
 
 
 
