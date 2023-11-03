@@ -1,7 +1,8 @@
+import axios from 'axios';
 import SimpleLightbox from 'simplelightbox';
 import "simplelightbox/dist/simple-lightbox.min.css";
 import { elements } from './js/elements';
-import { options, serviceGetImages } from './js/api-data';
+import { options, BASE_URL } from './js/api-data';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const { form, gallery, guard} = elements;
@@ -112,7 +113,10 @@ function createMurkupGallery(arr) {
         </a>`).join("");}
 
 
-
+export async function serviceGetImages() {
+    const resp = await axios.get(BASE_URL, options);
+    return { hits, totalHits } = resp.data;
+}
 
 
 
