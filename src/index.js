@@ -1,7 +1,7 @@
 import SimpleLightbox from 'simplelightbox';
 import "simplelightbox/dist/simple-lightbox.min.css";
-import { elements } from './elements';
-import { options, serviceGetImages } from './api-data';
+import { elements } from './js/elements';
+import { options, serviceGetImages } from './js/api-data';
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const { form, gallery, guard} = elements;
